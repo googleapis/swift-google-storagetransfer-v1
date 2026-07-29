@@ -22,44 +22,52 @@ import GoogleCloudWkt
 import GoogleLongrunning
 import GoogleRpc
 import GoogleCloudGax
+import struct Logging.Logger
 
 extension Clients {
-  final class StorageTransferServiceRetry: StorageTransferServiceStub {
+  final class StorageTransferServiceLogging: StorageTransferServiceStub {
     let inner: any StorageTransferServiceStub
-    let options: GoogleCloudGax.ClientOptions
+    let logger: Logger
 
-    public init(_ inner: any StorageTransferServiceStub, options: GoogleCloudGax.ClientOptions) {
+    public init(_ inner: any StorageTransferServiceStub, logger: Logger) {
+      var logger = logger
+      logger[metadataKey: "gcp.artifact.id"] = "google-storagetransfer-v1"
+      logger[metadataKey: "gcp.client.service"] = "storagetransfer"
+      logger[metadataKey: "gcp.experimental.swift.client"] = "StorageTransferService"
       self.inner = inner
-      self.options = options
+      self.logger = logger
     }
 
     func _intercept<Input, Output>(
       request: Input,
       options: GoogleCloudGax.RequestOptions,
-      idempotent: Swift.Bool,
+      name: Swift.String,
       action: (Input, GoogleCloudGax.RequestOptions) async throws -> Output,
     ) async throws -> Output {
-      let loop = GoogleCloudGax._RetryLoop(
-        options: options, withDefault: self.options, idempotent: idempotent,
-      )
-      let attempt = { (attemptTimeout: Swift.Duration?) async throws -> Output in
-        var attemptOptions = options
-        attemptOptions.attemptTimeout = attemptTimeout
-        return try await action(request, attemptOptions)
+      var logger = logger
+      logger[metadataKey: "gcp.experimental.swift.request.id"] = "\(UUID())"
+      logger[metadataKey: "gcp.experimental.swift.method"] = .string(name)
+      logger.debug("enter  : \(request) \(options)")
+      do {
+        let output = try await action(request, options)
+        logger.debug("success: \(request) \(options) \(output)")
+        return output
+      } catch let error {
+        logger.debug("error  : \(request) \(options) \(error)")
+        throw error
       }
-      return try await loop.run(attempt: attempt)
     }
 
     public func getGoogleServiceAccount(
       request: GetGoogleServiceAccountRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.GoogleServiceAccount {
+    ) async throws -> GoogleStorageTransferV1.GoogleServiceAccount {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getGoogleServiceAccount",
         action: {
           (r: GetGoogleServiceAccountRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.GoogleServiceAccount
+            -> GoogleStorageTransferV1.GoogleServiceAccount
           in
           return try await self.inner.getGoogleServiceAccount(request: r, options: o)
         })
@@ -67,14 +75,14 @@ extension Clients {
 
     public func createTransferJob(
       request: CreateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob {
+    ) async throws -> GoogleStorageTransferV1.TransferJob {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "createTransferJob",
         action: {
           (r: CreateTransferJobRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.TransferJob
+            -> GoogleStorageTransferV1.TransferJob
           in
           return try await self.inner.createTransferJob(request: r, options: o)
         })
@@ -82,14 +90,14 @@ extension Clients {
 
     public func updateTransferJob(
       request: UpdateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob {
+    ) async throws -> GoogleStorageTransferV1.TransferJob {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "updateTransferJob",
         action: {
           (r: UpdateTransferJobRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.TransferJob
+            -> GoogleStorageTransferV1.TransferJob
           in
           return try await self.inner.updateTransferJob(request: r, options: o)
         })
@@ -97,14 +105,14 @@ extension Clients {
 
     public func getTransferJob(
       request: GetTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob {
+    ) async throws -> GoogleStorageTransferV1.TransferJob {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getTransferJob",
         action: {
           (r: GetTransferJobRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.TransferJob
+            -> GoogleStorageTransferV1.TransferJob
           in
           return try await self.inner.getTransferJob(request: r, options: o)
         })
@@ -112,14 +120,14 @@ extension Clients {
 
     public func listTransferJobs(
       request: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse {
+    ) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listTransferJobs",
         action: {
           (r: ListTransferJobsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.ListTransferJobsResponse
+            -> GoogleStorageTransferV1.ListTransferJobsResponse
           in
           return try await self.inner.listTransferJobs(request: r, options: o)
         })
@@ -131,7 +139,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "pauseTransferOperation",
         action: {
           (r: PauseTransferOperationRequest, o: GoogleCloudGax.RequestOptions) async throws -> Void
           in
@@ -145,7 +153,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "resumeTransferOperation",
         action: {
           (r: ResumeTransferOperationRequest, o: GoogleCloudGax.RequestOptions) async throws -> Void
           in
@@ -159,7 +167,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "runTransferJob",
         action: {
           (r: RunTransferJobRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -174,7 +182,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "deleteTransferJob",
         action: {
           (r: DeleteTransferJobRequest, o: GoogleCloudGax.RequestOptions) async throws -> Void in
           return try await self.inner.deleteTransferJob(request: r, options: o)
@@ -183,14 +191,14 @@ extension Clients {
 
     public func createAgentPool(
       request: CreateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool {
+    ) async throws -> GoogleStorageTransferV1.AgentPool {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "createAgentPool",
         action: {
           (r: CreateAgentPoolRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.AgentPool
+            -> GoogleStorageTransferV1.AgentPool
           in
           return try await self.inner.createAgentPool(request: r, options: o)
         })
@@ -198,14 +206,14 @@ extension Clients {
 
     public func updateAgentPool(
       request: UpdateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool {
+    ) async throws -> GoogleStorageTransferV1.AgentPool {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "updateAgentPool",
         action: {
           (r: UpdateAgentPoolRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.AgentPool
+            -> GoogleStorageTransferV1.AgentPool
           in
           return try await self.inner.updateAgentPool(request: r, options: o)
         })
@@ -213,14 +221,14 @@ extension Clients {
 
     public func getAgentPool(
       request: GetAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool {
+    ) async throws -> GoogleStorageTransferV1.AgentPool {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getAgentPool",
         action: {
           (r: GetAgentPoolRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.AgentPool
+            -> GoogleStorageTransferV1.AgentPool
           in
           return try await self.inner.getAgentPool(request: r, options: o)
         })
@@ -228,14 +236,14 @@ extension Clients {
 
     public func listAgentPools(
       request: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse {
+    ) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listAgentPools",
         action: {
           (r: ListAgentPoolsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleStoragetransferV1.ListAgentPoolsResponse
+            -> GoogleStorageTransferV1.ListAgentPoolsResponse
           in
           return try await self.inner.listAgentPools(request: r, options: o)
         })
@@ -247,7 +255,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "deleteAgentPool",
         action: {
           (r: DeleteAgentPoolRequest, o: GoogleCloudGax.RequestOptions) async throws -> Void in
           return try await self.inner.deleteAgentPool(request: r, options: o)
@@ -260,7 +268,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "listOperations",
         action: {
           (r: GoogleLongrunning.ListOperationsRequest, o: GoogleCloudGax.RequestOptions)
             async throws -> GoogleLongrunning.ListOperationsResponse
@@ -275,7 +283,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: true,
+        name: "getOperation",
         action: {
           (r: GoogleLongrunning.GetOperationRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -290,7 +298,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        idempotent: false,
+        name: "cancelOperation",
         action: {
           (r: GoogleLongrunning.CancelOperationRequest, o: GoogleCloudGax.RequestOptions)
             async throws -> Void in

@@ -54,7 +54,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_GetGoogleServiceAccount")
   public func getGoogleServiceAccount(
     request: GetGoogleServiceAccountRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.GoogleServiceAccount {
+  ) async throws -> GoogleStorageTransferV1.GoogleServiceAccount {
     try await self.inner.getGoogleServiceAccount(request: request, options: options)
   }
 
@@ -63,7 +63,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_CreateTransferJob")
   public func createTransferJob(
     request: CreateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.TransferJob {
+  ) async throws -> GoogleStorageTransferV1.TransferJob {
     try await self.inner.createTransferJob(request: request, options: options)
   }
 
@@ -84,7 +84,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_UpdateTransferJob")
   public func updateTransferJob(
     request: UpdateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.TransferJob {
+  ) async throws -> GoogleStorageTransferV1.TransferJob {
     try await self.inner.updateTransferJob(request: request, options: options)
   }
 
@@ -93,7 +93,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_GetTransferJob")
   public func getTransferJob(
     request: GetTransferJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.TransferJob {
+  ) async throws -> GoogleStorageTransferV1.TransferJob {
     try await self.inner.getTransferJob(request: request, options: options)
   }
 
@@ -102,7 +102,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_ListTransferJobs")
   public func listTransferJobs(
     request: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse {
+  ) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse {
     try await self.inner.listTransferJobs(request: request, options: options)
   }
 
@@ -113,7 +113,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
     byItem: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<TransferJob, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse in
+      (token: Swift.String) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listTransferJobs(request: request, options: options)
@@ -217,7 +217,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_CreateAgentPool")
   public func createAgentPool(
     request: CreateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     try await self.inner.createAgentPool(request: request, options: options)
   }
 
@@ -226,7 +226,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_UpdateAgentPool")
   public func updateAgentPool(
     request: UpdateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     try await self.inner.updateAgentPool(request: request, options: options)
   }
 
@@ -235,7 +235,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_GetAgentPool")
   public func getAgentPool(
     request: GetAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     try await self.inner.getAgentPool(request: request, options: options)
   }
 
@@ -244,7 +244,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
   /// @Snippet(path: "StorageTransferService_ListAgentPools")
   public func listAgentPools(
     request: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse {
+  ) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse {
     try await self.inner.listAgentPools(request: request, options: options)
   }
 
@@ -255,7 +255,7 @@ public class StorageTransferServiceClient: Clients.StorageTransferServiceProtoco
     byItem: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<AgentPool, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse in
+      (token: Swift.String) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listAgentPools(request: request, options: options)
@@ -354,23 +354,23 @@ extension Clients {
   public protocol StorageTransferServiceProtocol {
     /// See `StorageTransferServiceClient.getGoogleServiceAccount`.
     func getGoogleServiceAccount(request: GetGoogleServiceAccountRequest) async throws
-      -> GoogleStoragetransferV1.GoogleServiceAccount
+      -> GoogleStorageTransferV1.GoogleServiceAccount
 
     /// See `StorageTransferServiceClient.createTransferJob`.
     func createTransferJob(request: CreateTransferJobRequest) async throws
-      -> GoogleStoragetransferV1.TransferJob
+      -> GoogleStorageTransferV1.TransferJob
 
     /// See `StorageTransferServiceClient.updateTransferJob`.
     func updateTransferJob(request: UpdateTransferJobRequest) async throws
-      -> GoogleStoragetransferV1.TransferJob
+      -> GoogleStorageTransferV1.TransferJob
 
     /// See `StorageTransferServiceClient.getTransferJob`.
     func getTransferJob(request: GetTransferJobRequest) async throws
-      -> GoogleStoragetransferV1.TransferJob
+      -> GoogleStorageTransferV1.TransferJob
 
     /// See `StorageTransferServiceClient.listTransferJobs`.
     func listTransferJobs(request: ListTransferJobsRequest) async throws
-      -> GoogleStoragetransferV1.ListTransferJobsResponse
+      -> GoogleStorageTransferV1.ListTransferJobsResponse
 
     /// See `StorageTransferServiceClient.listTransferJobs`.
     func listTransferJobs(
@@ -395,37 +395,37 @@ extension Clients {
 
     /// See `StorageTransferServiceClient.createAgentPool`.
     func createAgentPool(request: CreateAgentPoolRequest) async throws
-      -> GoogleStoragetransferV1.AgentPool
+      -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.createAgentPool`.
     func createAgentPool(
       projectId: Swift.String,
       agentPool: AgentPool?,
       agentPoolId: Swift.String,
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.updateAgentPool`.
     func updateAgentPool(request: UpdateAgentPoolRequest) async throws
-      -> GoogleStoragetransferV1.AgentPool
+      -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.updateAgentPool`.
     func updateAgentPool(
       agentPool: AgentPool?,
       updateMask: GoogleCloudWkt.FieldMask?,
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.getAgentPool`.
     func getAgentPool(request: GetAgentPoolRequest) async throws
-      -> GoogleStoragetransferV1.AgentPool
+      -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.getAgentPool`.
     func getAgentPool(
       name: Swift.String,
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.listAgentPools`.
     func listAgentPools(request: ListAgentPoolsRequest) async throws
-      -> GoogleStoragetransferV1.ListAgentPoolsResponse
+      -> GoogleStorageTransferV1.ListAgentPoolsResponse
 
     /// See `StorageTransferServiceClient.listAgentPools`.
     func listAgentPools(
@@ -471,27 +471,27 @@ extension Clients {
     /// See `StorageTransferServiceClient.getGoogleServiceAccount`.
     func getGoogleServiceAccount(
       request: GetGoogleServiceAccountRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.GoogleServiceAccount
+    ) async throws -> GoogleStorageTransferV1.GoogleServiceAccount
 
     /// See `StorageTransferServiceClient.createTransferJob`.
     func createTransferJob(
       request: CreateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob
+    ) async throws -> GoogleStorageTransferV1.TransferJob
 
     /// See `StorageTransferServiceClient.updateTransferJob`.
     func updateTransferJob(
       request: UpdateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob
+    ) async throws -> GoogleStorageTransferV1.TransferJob
 
     /// See `StorageTransferServiceClient.getTransferJob`.
     func getTransferJob(
       request: GetTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob
+    ) async throws -> GoogleStorageTransferV1.TransferJob
 
     /// See `StorageTransferServiceClient.listTransferJobs`.
     func listTransferJobs(
       request: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse
+    ) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse
 
     /// See `StorageTransferServiceClient.listTransferJobs`.
     func listTransferJobs(
@@ -526,22 +526,22 @@ extension Clients {
     /// See `StorageTransferServiceClient.createAgentPool`.
     func createAgentPool(
       request: CreateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.updateAgentPool`.
     func updateAgentPool(
       request: UpdateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.getAgentPool`.
     func getAgentPool(
       request: GetAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     /// See `StorageTransferServiceClient.listAgentPools`.
     func listAgentPools(
       request: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse
+    ) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse
 
     /// See `StorageTransferServiceClient.listAgentPools`.
     func listAgentPools(
@@ -573,62 +573,62 @@ extension Clients {
 // Default implementations
 extension Clients.StorageTransferServiceProtocol {
   public func getGoogleServiceAccount(request: GetGoogleServiceAccountRequest) async throws
-    -> GoogleStoragetransferV1.GoogleServiceAccount
+    -> GoogleStorageTransferV1.GoogleServiceAccount
   {
     try await self.getGoogleServiceAccount(request: request, options: .init())
   }
 
   public func getGoogleServiceAccount(
     request: GetGoogleServiceAccountRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.GoogleServiceAccount {
+  ) async throws -> GoogleStorageTransferV1.GoogleServiceAccount {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func createTransferJob(request: CreateTransferJobRequest) async throws
-    -> GoogleStoragetransferV1.TransferJob
+    -> GoogleStorageTransferV1.TransferJob
   {
     try await self.createTransferJob(request: request, options: .init())
   }
 
   public func createTransferJob(
     request: CreateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.TransferJob {
+  ) async throws -> GoogleStorageTransferV1.TransferJob {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func updateTransferJob(request: UpdateTransferJobRequest) async throws
-    -> GoogleStoragetransferV1.TransferJob
+    -> GoogleStorageTransferV1.TransferJob
   {
     try await self.updateTransferJob(request: request, options: .init())
   }
 
   public func updateTransferJob(
     request: UpdateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.TransferJob {
+  ) async throws -> GoogleStorageTransferV1.TransferJob {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getTransferJob(request: GetTransferJobRequest) async throws
-    -> GoogleStoragetransferV1.TransferJob
+    -> GoogleStorageTransferV1.TransferJob
   {
     try await self.getTransferJob(request: request, options: .init())
   }
 
   public func getTransferJob(
     request: GetTransferJobRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.TransferJob {
+  ) async throws -> GoogleStorageTransferV1.TransferJob {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func listTransferJobs(request: ListTransferJobsRequest) async throws
-    -> GoogleStoragetransferV1.ListTransferJobsResponse
+    -> GoogleStorageTransferV1.ListTransferJobsResponse
   {
     try await self.listTransferJobs(request: request, options: .init())
   }
 
   public func listTransferJobs(
     request: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse {
+  ) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -642,7 +642,7 @@ extension Clients.StorageTransferServiceProtocol {
     byItem: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<TransferJob, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse in
+      (token: Swift.String) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -707,14 +707,14 @@ extension Clients.StorageTransferServiceProtocol {
   }
 
   public func createAgentPool(request: CreateAgentPoolRequest) async throws
-    -> GoogleStoragetransferV1.AgentPool
+    -> GoogleStorageTransferV1.AgentPool
   {
     try await self.createAgentPool(request: request, options: .init())
   }
 
   public func createAgentPool(
     request: CreateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -722,7 +722,7 @@ extension Clients.StorageTransferServiceProtocol {
     projectId: Swift.String,
     agentPool: AgentPool?,
     agentPoolId: Swift.String,
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     let request = CreateAgentPoolRequest().with {
       $0.projectId = projectId
       $0.agentPool = agentPool
@@ -732,21 +732,21 @@ extension Clients.StorageTransferServiceProtocol {
   }
 
   public func updateAgentPool(request: UpdateAgentPoolRequest) async throws
-    -> GoogleStoragetransferV1.AgentPool
+    -> GoogleStorageTransferV1.AgentPool
   {
     try await self.updateAgentPool(request: request, options: .init())
   }
 
   public func updateAgentPool(
     request: UpdateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func updateAgentPool(
     agentPool: AgentPool?,
     updateMask: GoogleCloudWkt.FieldMask?,
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     let request = UpdateAgentPoolRequest().with {
       $0.agentPool = agentPool
       $0.updateMask = updateMask
@@ -755,20 +755,20 @@ extension Clients.StorageTransferServiceProtocol {
   }
 
   public func getAgentPool(request: GetAgentPoolRequest) async throws
-    -> GoogleStoragetransferV1.AgentPool
+    -> GoogleStorageTransferV1.AgentPool
   {
     try await self.getAgentPool(request: request, options: .init())
   }
 
   public func getAgentPool(
     request: GetAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getAgentPool(
     name: Swift.String,
-  ) async throws -> GoogleStoragetransferV1.AgentPool {
+  ) async throws -> GoogleStorageTransferV1.AgentPool {
     let request = GetAgentPoolRequest().with {
       $0.name = name
     }
@@ -776,14 +776,14 @@ extension Clients.StorageTransferServiceProtocol {
   }
 
   public func listAgentPools(request: ListAgentPoolsRequest) async throws
-    -> GoogleStoragetransferV1.ListAgentPoolsResponse
+    -> GoogleStorageTransferV1.ListAgentPoolsResponse
   {
     try await self.listAgentPools(request: request, options: .init())
   }
 
   public func listAgentPools(
     request: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse {
+  ) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -797,7 +797,7 @@ extension Clients.StorageTransferServiceProtocol {
     byItem: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<AgentPool, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse in
+      (token: Swift.String) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)

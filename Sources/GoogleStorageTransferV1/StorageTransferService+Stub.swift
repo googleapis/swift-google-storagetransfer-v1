@@ -27,23 +27,23 @@ extension Clients {
   protocol StorageTransferServiceStub {
     func getGoogleServiceAccount(
       request: GetGoogleServiceAccountRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.GoogleServiceAccount
+    ) async throws -> GoogleStorageTransferV1.GoogleServiceAccount
 
     func createTransferJob(
       request: CreateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob
+    ) async throws -> GoogleStorageTransferV1.TransferJob
 
     func updateTransferJob(
       request: UpdateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob
+    ) async throws -> GoogleStorageTransferV1.TransferJob
 
     func getTransferJob(
       request: GetTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob
+    ) async throws -> GoogleStorageTransferV1.TransferJob
 
     func listTransferJobs(
       request: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse
+    ) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse
 
     func pauseTransferOperation(
       request: PauseTransferOperationRequest, options: GoogleCloudGax.RequestOptions
@@ -63,19 +63,19 @@ extension Clients {
 
     func createAgentPool(
       request: CreateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     func updateAgentPool(
       request: UpdateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     func getAgentPool(
       request: GetAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool
+    ) async throws -> GoogleStorageTransferV1.AgentPool
 
     func listAgentPools(
       request: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse
+    ) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse
 
     func deleteAgentPool(
       request: DeleteAgentPoolRequest, options: GoogleCloudGax.RequestOptions
@@ -104,7 +104,7 @@ extension Clients {
 
     public func getGoogleServiceAccount(
       request: GetGoogleServiceAccountRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.GoogleServiceAccount {
+    ) async throws -> GoogleStorageTransferV1.GoogleServiceAccount {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.projectId as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.project_id' is not set or is empty")
@@ -119,12 +119,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.GoogleServiceAccount.self, from: data)
+        GoogleStorageTransferV1.GoogleServiceAccount.self, from: data)
     }
 
     public func createTransferJob(
       request: CreateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob {
+    ) async throws -> GoogleStorageTransferV1.TransferJob {
       let path = try { () throws -> Swift.String in
         return "/v1/transferJobs"
       }()
@@ -140,12 +140,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.TransferJob.self, from: data)
+        GoogleStorageTransferV1.TransferJob.self, from: data)
     }
 
     public func updateTransferJob(
       request: UpdateTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob {
+    ) async throws -> GoogleStorageTransferV1.TransferJob {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.jobName as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.job_name' is not set or is empty")
@@ -162,12 +162,12 @@ extension Clients {
       req.httpBody = try JSONEncoder().encode(request)
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.TransferJob.self, from: data)
+        GoogleStorageTransferV1.TransferJob.self, from: data)
     }
 
     public func getTransferJob(
       request: GetTransferJobRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.TransferJob {
+    ) async throws -> GoogleStorageTransferV1.TransferJob {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.jobName as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.job_name' is not set or is empty")
@@ -184,12 +184,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.TransferJob.self, from: data)
+        GoogleStorageTransferV1.TransferJob.self, from: data)
     }
 
     public func listTransferJobs(
       request: ListTransferJobsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListTransferJobsResponse {
+    ) async throws -> GoogleStorageTransferV1.ListTransferJobsResponse {
       let path = try { () throws -> Swift.String in
         return "/v1/transferJobs"
       }()
@@ -205,7 +205,7 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.ListTransferJobsResponse.self, from: data)
+        GoogleStorageTransferV1.ListTransferJobsResponse.self, from: data)
     }
 
     public func pauseTransferOperation(
@@ -292,7 +292,7 @@ extension Clients {
 
     public func createAgentPool(
       request: CreateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool {
+    ) async throws -> GoogleStorageTransferV1.AgentPool {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.projectId as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.project_id' is not set or is empty")
@@ -313,12 +313,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.AgentPool.self, from: data)
+        GoogleStorageTransferV1.AgentPool.self, from: data)
     }
 
     public func updateAgentPool(
       request: UpdateAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool {
+    ) async throws -> GoogleStorageTransferV1.AgentPool {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.agentPool.map({ $0.name }), !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding(
@@ -340,12 +340,12 @@ extension Clients {
       }
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.AgentPool.self, from: data)
+        GoogleStorageTransferV1.AgentPool.self, from: data)
     }
 
     public func getAgentPool(
       request: GetAgentPoolRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.AgentPool {
+    ) async throws -> GoogleStorageTransferV1.AgentPool {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.name as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.name' is not set or is empty")
@@ -360,12 +360,12 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.AgentPool.self, from: data)
+        GoogleStorageTransferV1.AgentPool.self, from: data)
     }
 
     public func listAgentPools(
       request: ListAgentPoolsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleStoragetransferV1.ListAgentPoolsResponse {
+    ) async throws -> GoogleStorageTransferV1.ListAgentPoolsResponse {
       let path = try { () throws -> Swift.String in
         guard let pathVariable0 = request.projectId as Swift.String?, !pathVariable0.isEmpty else {
           throw GoogleCloudGax.RequestError.binding("'request.project_id' is not set or is empty")
@@ -384,7 +384,7 @@ extension Clients {
       req.setValue(Clients.clientHeader, forHTTPHeaderField: "X-Goog-Api-Client")
       let (data, _) = try await self.inner.rpc(for: req).get()
       return try GoogleCloudWkt._ProtoJSONDecoder().decode(
-        GoogleStoragetransferV1.ListAgentPoolsResponse.self, from: data)
+        GoogleStorageTransferV1.ListAgentPoolsResponse.self, from: data)
     }
 
     public func deleteAgentPool(
